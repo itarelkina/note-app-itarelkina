@@ -4,7 +4,7 @@ import Nav from './components/Nav';
 import List from './components/List';
 import Note from './components/Note';
 import axios from 'axios';
-
+import urlFor from './helpers/urlFor';
 
 class App extends Component {
   constructor() {
@@ -27,6 +27,11 @@ class App extends Component {
     .catch((err) => console.log(err.response.data) );
   }
 
+  getNote = () => {
+    console.log('Clicked!');
+  }
+
+
   render() {
     const { showNote, notes } = this.state;
 
@@ -39,6 +44,7 @@ class App extends Component {
         <List
           getNotes={this.getNotes}
           notes={notes}
+          getNote={this.getNote}
         />
       }
       </div>
