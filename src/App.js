@@ -18,10 +18,11 @@ class App extends Component {
 
   toggleNote = () => {
     this.setState({
-      showNote: ! this.state.showNote
+      showNote: ! this.state.showNote,
+      note: {}
     });
   }
-
+  
   getNotes = () => {
     axios.get(urlFor('notes'))
     .then((res) => this.setState({ notes: res.data }) )
