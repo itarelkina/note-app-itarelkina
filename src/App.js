@@ -22,7 +22,7 @@ class App extends Component {
       note: {}
     });
   }
-  
+
   getNotes = () => {
     axios.get(urlFor('notes'))
     .then((res) => this.setState({ notes: res.data }) )
@@ -48,8 +48,14 @@ class App extends Component {
     .then((res) => this.setState({ showNote: false }) )
     .catch((err) => console.log(err.response.data) );
   }
+    
+  deleteNote = (id) => {
+    const newNotesState = this.state.notes.filter((note) => note.id !== id );
+    axios.delete(urlFor(`notes/${id}`))
+    .then((res) => this.setState({ notes: newNotesState }))
+    .catch((err) => console.log(err.response.data) );
+  }
   
-
   render() {
     const { showNote, notes, note } = this.state;
 
@@ -66,6 +72,7 @@ class App extends Component {
           getNotes={this.getNotes}
           notes={notes}
           getNote={this.getNote}
+          deleteNote={deleteNote}
         />
       }
       </div>
