@@ -119,7 +119,7 @@ submitNote = (data, id) => {
           getNotes={this.getNotes}
           notes={notes}
           getNote={this.getNote}
-          deleteNote={deleteNote}
+          deleteNote={this.deleteNote}
         />
       }
       </div>
